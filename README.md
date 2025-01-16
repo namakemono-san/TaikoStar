@@ -1,19 +1,17 @@
-# TaikoStar
+# TaikoStaRPC
 
 This is a mod for Taiko no Tatsujin: Rhythm Festival
 
 > [!IMPORTANT]  
-> Currently under development
+> This mod was originally made by Namakemono-san. I simply forked it and removed features, whilst keeping only the RPC aspect of the mod.
 
 ## Features
 
 - Add Discord Rich Presence
-- Skip splash screen
-- Skip coin & reward screen
 
 ## Installation
 
-Wip
+Releases tab, and download the zip. Place this in Bepinex\Plugins
 
 ## License
 
