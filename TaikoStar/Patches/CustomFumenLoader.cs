@@ -2,7 +2,6 @@
 using System.Diagnostics.CodeAnalysis;
 using BepInEx.Logging;
 using HarmonyLib;
-using Scripts.UserData;
 
 namespace TaikoStar.Patches;
 
