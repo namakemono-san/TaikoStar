@@ -1,0 +1,49 @@
+﻿{
+  "unknown": "不明",
+  "song_genre_pops": "ポップス",
+  "song_genre_anime": "アニメ",
+  "song_genre_vocalo": "ボーカロイド™ 曲",
+  "song_genre_variety": "バラエティ",
+  "song_genre_classic": "クラシック",
+  "song_genre_game": "ゲームミュージック",
+  "song_genre_namco": "ナムコオリジナル",
+  "song_level_easy": "かんたん",
+  "song_level_normal": "ふつう",
+  "song_level_hard": "むずかしい",
+  "song_level_mania": "おに",
+  "song_level_ura": "おに（裏）",
+  "enso_type_normal": "ノーマル",
+  "enso_type_scenario": "シナリオ",
+  "enso_type_training": "トレーニング",
+  "enso_type_DonChanBand": "どんちゃんバンド",
+
+  "scene_boot_details": "ゲームをロード中...",
+  "scene_boot_state": "",
+  "scene_boot_smallImageKey": "",
+  "scene_boot_smallImageText": "",
+
+  "scene_title_details": "タイトル画面",
+  "scene_title_state": "",
+  "scene_title_smallImageKey": "",
+  "scene_title_smallImageText": "",
+
+  "scene_mainMenu_details": "オミコシティ: モード選択中",
+  "scene_mainMenu_state": "",
+  "scene_mainMenu_smallImageKey": "",
+  "scene_mainMenu_smallImageText": "",
+
+  "scene_thunderShrine_details": "雷音神社: モード選択中",
+  "scene_thunderShrine_state": "",
+  "scene_thunderShrine_smallImageKey": "",
+  "scene_thunderShrine_smallImageText": "",
+
+  "scene_songSelect_details": "譜面選択中",
+  "scene_songSelect_state": "演奏ゲーム",
+  "scene_songSelect_smallImageKey": "",
+  "scene_songSelect_smallImageText": "",
+
+  "scene_songSelectTraining_details": "譜面選択中",
+  "scene_songSelectTraining_state": "トレーニング",
+  "scene_songSelectTraining_smallImageKey": "",
+  "scene_songSelectTraining_smallImageText": ""
+}

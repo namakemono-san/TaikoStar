@@ -1,46 +1,64 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Generic;
 using DiscordRPC;
 using DiscordRPC.Logging;
 using TaikoStar.Patches;
 
-namespace TaikoStar.Modules.RPC;
+namespace TaikoStar.Modules.RPC
+{
+    public class DiscordRichPresence
+    {
+        public static DiscordRichPresence Instance { get; } = new();
 
-[SuppressMessage("ReSharper", "InconsistentNaming")]
-public class DiscordRichPresence {
-    public static DiscordRichPresence Instance { get; } = new();
+        private DiscordRpcClient _rpc;
 
-    private DiscordRpcClient rpc;
-    
-    private const string ClientId = "1309050701800017970";
-    
-    public readonly RichPresence RichPresence = new() {
-        Details = "初期化中...",
-        State = "",
-        Timestamps = Timestamps.Now,
-        Assets = new DiscordRPC.Assets()
-    };
+        private const string ClientId = "1309050701800017970";
 
-    public void Initialize() {
-        SongInfoPlayerPatcher.Instance.OnSongInfoPlayerFinished += EnsoHelpers.SetEnso;
-        
-        rpc = new DiscordRpcClient(ClientId);
-        
-        rpc.Logger = new ConsoleLogger {
-            Level = LogLevel.Warning,
-            Coloured = true
+        private Dictionary<string, string> _localizedData = new();
+
+        public readonly RichPresence RichPresence = new() {
+            Details = "Initializing...",
+            State = "",
+            Timestamps = Timestamps.Now,
+            Assets = new DiscordRPC.Assets()
         };
 
-        rpc.OnReady += (sender, e) => {
-            Plugin.Log.LogInfo($"Ready has been received from user {e.User.Username}");
-            UpdatePresence();
-        };
-        
-        rpc.OnPresenceUpdate += (sender, e) => {
-            Plugin.Log.LogInfo($"Update received! {e.Presence.Details}, {e.Presence.State}");
-        };
+        public void Initialize(Dictionary<string, string> translations) {
+            _localizedData = translations ?? new Dictionary<string, string>();
 
-        rpc.Initialize();
+            SongInfoPlayerPatcher.Instance.OnSongInfoPlayerFinished += EnsoHelpers.SetEnso;
+
+            _rpc = new DiscordRpcClient(ClientId) {
+                Logger = new ConsoleLogger
+                {
+                    Level = LogLevel.Warning,
+                    Coloured = true
+                }
+            };
+
+            _rpc.OnReady += (sender, e) => {
+                Plugin.Log.LogInfo($"Ready received from user {e.User.Username}");
+                UpdatePresence();
+            };
+
+            _rpc.OnPresenceUpdate += (sender, e) => {
+                Plugin.Log.LogInfo($"Presence updated: {e.Presence.Details}, {e.Presence.State}");
+            };
+
+            _rpc.Initialize();
+        }
+
+        public string T(string key) {
+            if (_localizedData.TryGetValue(key, out var value))
+            {
+                return value;
+            }
+
+            Plugin.Log.LogWarning($"Key not found: {key}");
+            return "LOCALE_KEY_NOT_FOUND";
+        }
+
+        public void UpdatePresence() {
+            _rpc.SetPresence(RichPresence);
+        }
     }
-    
-    public void UpdatePresence() => rpc.SetPresence(RichPresence);
 }

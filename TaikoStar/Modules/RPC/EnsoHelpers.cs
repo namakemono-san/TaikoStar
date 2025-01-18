@@ -19,14 +19,14 @@ public abstract class EnsoHelpers {
 
     private static void GenreRPCState(EnsoData.SongGenre songGenre) {
         Instance.RichPresence.State = songGenre switch {
-            EnsoData.SongGenre.Pops => "ポップス",
-            EnsoData.SongGenre.Anime => "アニメ",
-            EnsoData.SongGenre.Vocalo => "ボーカロイド™️曲",
-            EnsoData.SongGenre.Variety => "バラエティ",
-            EnsoData.SongGenre.Classic => "クラシック",
-            EnsoData.SongGenre.Game => "ゲームミュージック",
-            EnsoData.SongGenre.Namco => "ナムコオリジナル",
-            _ => "不明"
+            EnsoData.SongGenre.Pops => Instance.T("song_genre_pops"),
+            EnsoData.SongGenre.Anime => Instance.T("song_genre_anime"),
+            EnsoData.SongGenre.Vocalo => Instance.T("song_genre_vocalo"),
+            EnsoData.SongGenre.Variety => Instance.T("song_genre_variety"),
+            EnsoData.SongGenre.Classic => Instance.T("song_genre_classic"),
+            EnsoData.SongGenre.Game => Instance.T("song_genre_game"),
+            EnsoData.SongGenre.Namco => Instance.T("song_genre_namco"),
+            _ => Instance.T("unknown")
         };
     }
     
@@ -42,23 +42,23 @@ public abstract class EnsoHelpers {
         };
 
         Instance.RichPresence.Assets.SmallImageText = ensoLevel switch {
-            EnsoData.EnsoLevelType.Easy => "かんたん",
-            EnsoData.EnsoLevelType.Normal => "ふつう",
-            EnsoData.EnsoLevelType.Hard => "むずかしい",
-            EnsoData.EnsoLevelType.Mania => "おに",
-            EnsoData.EnsoLevelType.Ura => "おに（裏）",
-            EnsoData.EnsoLevelType.Num => "不明",
-            _ => "不明"
+            EnsoData.EnsoLevelType.Easy => Instance.T("song_level_easy"),
+            EnsoData.EnsoLevelType.Normal => Instance.T("song_level_normal"),
+            EnsoData.EnsoLevelType.Hard => Instance.T("song_level_hard"),
+            EnsoData.EnsoLevelType.Mania => Instance.T("song_level_mania"),
+            EnsoData.EnsoLevelType.Ura => Instance.T("song_level_ura"),
+            EnsoData.EnsoLevelType.Num => Instance.T("unknown"),
+            _ => Instance.T("unknown")
         };
     }
     
     private static void EnsoScreenRPC(EnsoType ensoType, string songName, EnsoData.SongGenre songGenre, EnsoData.EnsoLevelType ensoLevel) {
         var ensoTypeText = ensoType switch {
-            EnsoType.Normal => "ノーマル",
-            EnsoType.Scenario => "シナリオ",
-            EnsoType.Training => "トレーニング",
-            EnsoType.DonChanBand => "どんちゃんバンド",
-            _ => "不明"
+            EnsoType.Normal => Instance.T("enso_type_normal"),
+            EnsoType.Scenario => Instance.T("enso_type_scenario"),
+            EnsoType.Training => Instance.T("enso_type_training"),
+            EnsoType.DonChanBand => Instance.T("enso_type_DonChanBand"),
+            _ => Instance.T("unknown")
         };
 
         Instance.RichPresence.Details = songName;
