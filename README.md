@@ -2,8 +2,9 @@
 
 This is a mod for Taiko no Tatsujin: Rhythm Festival
 
-> [!IMPORTANT]  
-> Currently under development
+> [!CAUTION]  
+> Due to an official announcement, we are discontinuing development of this mod.
+> We will continue to publish the mod, but please use it at your own risk.
 
 ## Features
 
